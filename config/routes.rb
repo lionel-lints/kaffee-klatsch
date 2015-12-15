@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  root :to => 'application#angular'
+  resource :sessions, only: [:create, :destroy]
+  resources :users , only: [:show, :create, :update, :destroy] do
+    resources :surveys, shallow: true
+  end
+
+  # resources :users, only [:show, :create, :update, :destroy] do
+  #   resources :surveys, only [:show, :create, :update, :destroy]
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
