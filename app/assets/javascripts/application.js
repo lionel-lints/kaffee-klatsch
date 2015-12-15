@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require angularjs
+//= require angular-rails-templates
+//= require angular-route
+//= require angular-animate
+//= require angular-resource
+//= require materialize.min.js
+//= require materialize-sprockets
+//= require materialize/extras/nouislider
 //= require_tree .
