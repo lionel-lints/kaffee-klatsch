@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angularjs
-//= require angular-rails-templates
+//= require angular
 //= require angular-route
 //= require angular-animate
 //= require angular-resource
+//= require angular-rails-templates
+//= require_tree ./templates
 //= require materialize.min.js
 //= require materialize-sprockets
 //= require materialize/extras/nouislider

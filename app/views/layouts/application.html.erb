@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KaffeeKlatsch</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <title>Kaffee Klatsch</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body ng-app="app">
+  <nav ng-controller="navCtrl">
+    <a ng-show="{{true}}" href="">sign up</a>
+    <a ng-show="{{true}}" href="">login</a>
+    <a ng-hide="{{true}}" href="">profile</a>
+    <a ng-hide="{{true}}" href="">log out</a>
+  </nav>
+  <div ng-view>
+  </div>
 </body>
 </html>

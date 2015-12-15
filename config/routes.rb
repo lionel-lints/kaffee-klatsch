@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users , only: [:show, :create, :update, :destroy] do
     resources :surveys, shallow: true
   end
-
+  # get "sign_up" => "users#new", :as => "sign_up"
   # resources :users, only [:show, :create, :update, :destroy] do
   #   resources :surveys, only [:show, :create, :update, :destroy]
   # end
