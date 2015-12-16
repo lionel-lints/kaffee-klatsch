@@ -14,16 +14,16 @@ app.config(['$routeProvider', function($routeProvider){
       controller : 'userCtrl',
       templateUrl : "<%= asset_path('templates/sign_up.html')%>"
     })
-    .when('/user/{id}', {
+    .when('/home', {
       controller : 'mainCtrl',
-      templateUrl : ''
+      templateUrl : "<%= asset_path('templates/home.html')%>"
     })
     .when('/user/{id}/profile', {
       controller : 'userCtrl',
       templateUrl : ''
     })
     .when('/sign_in', {
-      controller : 'CatsCtrl',
+      controller : '',
       templateUrl : ''
     })
     .otherwise({

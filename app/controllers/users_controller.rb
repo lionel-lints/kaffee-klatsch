@@ -1,24 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate, only: %i(index show edit update destroy)
-  before_action :new_user?, only: %i(new create)
-
-  # def index
-  #   @users = User.all
-  # end
+  before_action :authenticate, only: %i(show update destroy)
+  before_action :new_user?, only: %i(create)
 
   def show
     @user = User.find(params[:id])
     p @user
     @surveys = @user.surveys.all
   end
-
-  # def new
-  #   @user = User.new
-  # end
-
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
 
   def create
     @user = User.new(user_params)

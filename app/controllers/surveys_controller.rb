@@ -25,10 +25,9 @@ class SurveysController < ApplicationController
     lon = location['location']['lng'].round(4)
     response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat.to_s + '&units=imperial&lon=' + lon.to_s + '&type=accurate&appid=' + ENV['COFFEE_TIME_APP'])
     hash = JSON.parse response.body
-    p '!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+
     p 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat.to_s + '&units=imperial&lon=' + lon.to_s + '&appid=' + ENV['COFFEE_TIME_APP']
-    p hash
-    p '!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+
     @user = User.find(params[:user_id])
     @survey = @user.surveys.create survey_params.merge(:weatherMain => hash['weather'][0]['main'], :weatherDesc => hash['weather'][0]['description'], :dayTempHi => hash['main']['temp_max'], :dayTempLow => hash['main']['temp_min'], :currentTemp => hash['main']['temp'])
     @user = User.find(params[:user_id])
