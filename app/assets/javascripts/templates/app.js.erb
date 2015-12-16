@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'templates']);
+var app = angular.module('app', ['ngRoute', 'templates', 'ngAnimate']);
 app.config(['$routeProvider', function($routeProvider){
 
   $routeProvider
@@ -33,54 +33,10 @@ app.config(['$routeProvider', function($routeProvider){
 
 app.controller('welcomeCtrl', ['$scope', function($scope) {
 
-  $scope.posts = [
-    {title: 'post 1', upvotes: 5},
-    {title: 'post 2', upvotes: 2},
-    {title: 'post 3', upvotes: 15},
-    {title: 'post 4', upvotes: 9},
-    {title: 'post 5', upvotes: 4}
-  ];
-
-  $scope.addPost = function(){
-    if(!$scope.title || $scope.title === '') { return; }
-    $scope.posts.push({
-      title: $scope.title,
-      link: $scope.link,
-      upvotes: 0
-    });
-    $scope.title = '';
-    $scope.link = '';
-  };
-
-  $scope.incrementUpvotes = function(post) {
-    post.upvotes += 1;
-  };
 }]);
 
 app.controller('userCtrl', ['$scope', function($scope) {
 
-  $scope.posts = [
-    {title: 'post 1', upvotes: 5},
-    {title: 'post 2', upvotes: 2},
-    {title: 'post 3', upvotes: 15},
-    {title: 'post 4', upvotes: 9},
-    {title: 'post 5', upvotes: 4}
-  ];
-
-  $scope.addPost = function(){
-    if(!$scope.title || $scope.title === '') { return; }
-    $scope.posts.push({
-      title: $scope.title,
-      link: $scope.link,
-      upvotes: 0
-    });
-    $scope.title = '';
-    $scope.link = '';
-  };
-
-  $scope.incrementUpvotes = function(post) {
-    post.upvotes += 1;
-  };
 }]);
 
 app.controller('navCtrl', ['$scope', function($scope) {
