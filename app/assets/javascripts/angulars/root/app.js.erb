@@ -1,0 +1,29 @@
+var app = angular.module("rootApp", ['ngResource', 'ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider){
+  $routeProvider
+    .when('/', {
+      controller : 'rootCtrl',
+      templateUrl : "<%= asset_path('angulars/root/index.html') %>"
+    })
+    .otherwise({
+      redirectTo : '/'
+    });
+}]);
+
+
+app.factory("UserFactory", function($resource) {
+  return $resource("/users/:id", {id:'@id' },
+    {'create':  { method: 'POST' },
+      'show':    { method: 'GET', isArray: false },
+      'update':  { method: 'PUT' },
+      'destroy': { method: 'DELETE' }
+    }
+  );
+});
+
+app.controller("rootCtrl", ['$scope', 'UserFactory', function($scope, UserFactory){
+  $scope.addUser = function (){
+    UserFactory.create({username: this.username, email:this.email, password: this.password});
+  };
+}]);

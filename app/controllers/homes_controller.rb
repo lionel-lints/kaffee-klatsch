@@ -1,6 +1,5 @@
 class HomesController < ApplicationController
-
-  layout: :homes
+  layout 'home'
 
   def signin
   end

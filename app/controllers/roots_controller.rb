@@ -1,5 +1,5 @@
 class RootsController < ApplicationController
-  layout: :roots
+  layout 'root'
 
   def landing
   end

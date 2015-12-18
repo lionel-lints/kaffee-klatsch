@@ -12,12 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require lib/javascripts/angular.min.js
-//= require lib/javascripts/angular-resource.min.js
-//= require lib/javascripts/angular-route.min.js
-//= require lib/javascripts/angular-animate.min.js
-//= require angular-rails-templates
-
+//= require angular
+//= require angular-route
+//= require angular-resource
 //= require materialize.min.js
 //= require materialize-sprockets
-//= require materialize/extras/nouislider
+//= require angulars/root/app.js

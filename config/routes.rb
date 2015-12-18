@@ -1,18 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'homes/signin'
-
-  get 'homes/signup'
-
-  get 'roots/landing'
-
-  get 'roots/signout'
-
   root :to => 'roots#landing'
   post 'signout' => 'roots#signout', as: :signout
   post 'signup' => 'homes#signup', as: :signup
   post 'signup' => 'homes#signin', as: :signin
-  
+
   # resource :sessions, only: [:create, :destroy]
   resources :users , only: [:show, :create, :update, :destroy] do
     resources :surveys, shallow: true
