@@ -1,9 +1,8 @@
 class HomesController < ApplicationController
   layout 'home'
+  before_action :authenticate
 
-  def signin
+  def show
   end
 
-  def signup
-  end
 end

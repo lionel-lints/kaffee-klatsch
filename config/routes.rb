@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root :to => 'roots#landing'
   post 'signout' => 'roots#signout', as: :signout
-  post 'signup' => 'homes#signup', as: :signup
-  post 'signup' => 'homes#signin', as: :signin
+  get 'home' => 'homes#show', as: :home
+  post 'signin' => 'homes#signin', as: :signin
 
   # resource :sessions, only: [:create, :destroy]
   resources :users , only: [:show, :create, :update, :destroy] do

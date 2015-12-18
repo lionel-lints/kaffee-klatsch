@@ -1,0 +1,13 @@
+var app = angular.module("homeApp", ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      controller : 'homeCtrl',
+      templateUrl : "<%= asset_path('angulars/home/index.html') %>"
+    });
+}]);
+
+app.controller('homeCtrl', ['$scope', function($scope) {
+  $scope.username = 'jimmy';
+}]);

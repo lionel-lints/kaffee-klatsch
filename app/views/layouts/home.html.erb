@@ -3,10 +3,10 @@
 <head>
   <title>kaffeeklatsch</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'homes', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="home">
+<body ng-app="homeApp">
   <div ng-view></div>
 </body>
 </html>

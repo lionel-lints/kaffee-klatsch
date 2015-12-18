@@ -2,27 +2,20 @@ class UsersController < ApplicationController
   before_action :verified_request?
   before_action :authenticate, only: %i(show update destroy)
   before_action :new_user?, only: %i(create)
-  respond_to :json
+  respond_to :html, :json
 
   def show
     @user = User.find(params[:id])
-    p @user
     @surveys = @user.surveys.all
   end
 
   def create
     @user = User.new(user_params)
-    p "!!!!!!!!!!!!!!!!!!!!!"
-    p @user
-    # respond_to do |format|
-    #   if @user.save
-    #     format.html { render :show, notice: 'User was successfully created.' }
-    #     format.json { render :show, status: :created, location: @user }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @user.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    if @user.save
+      render json: true
+    else
+      render json: false
+    end
   end
 
   def update

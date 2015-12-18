@@ -1,29 +1,48 @@
-var app = angular.module("rootApp", ['ngResource', 'ngRoute']);
+var app = angular.module("rootApp", ['ngRoute']);
 
-app.config(['$routeProvider', function($routeProvider){
+app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/', {
       controller : 'rootCtrl',
       templateUrl : "<%= asset_path('angulars/root/index.html') %>"
-    })
-    .otherwise({
-      redirectTo : '/'
     });
+    // .otherwise({
+    //   redirectTo : '/'
+    // });
 }]);
 
 
-app.factory("UserFactory", function($resource) {
-  return $resource("/users/:id", {id:'@id' },
-    {'create':  { method: 'POST' },
-      'show':    { method: 'GET', isArray: false },
-      'update':  { method: 'PUT' },
-      'destroy': { method: 'DELETE' }
-    }
-  );
-});
+app.controller("rootCtrl", ['$scope', '$http', function($scope, $http) {
 
-app.controller("rootCtrl", ['$scope', 'UserFactory', function($scope, UserFactory){
-  $scope.addUser = function (){
-    UserFactory.create({username: this.username, email:this.email, password: this.password});
+  $scope.addUser = function() {
+    $http({
+      method: 'POST',
+      url: '/users',
+      data: {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      }
+    }).then(function successCallback(response) {
+      if (response.data){
+        window.location = '/home/';
+      }
+    });
+  };
+
+  $scope.checkUser = function() {
+    $http({
+      method: 'POST',
+      url: '/signin',
+      data: {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      }
+    }).then(function successCallback(response) {
+      if (response.data){
+        window.location = '/home/';
+      }
+    });
   };
 }]);

@@ -1,0 +1,39 @@
+  <div ng-controller="homeCtrl" class="">
+    <div class="right">
+    </div>
+    <div class="left">
+      <!-- nav bar -->
+      <nav class="navbar-fixed orange darken-3">
+        <div class="nav-wrapper container">
+          <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+          <a href="#!" class="brand-logo">&nbsp;KAFFEE-KLATSCH</a>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="#modalLogin" class="modal-trigger">Sign in</a></li>
+            <li><a href="#modalSignup" class="modal-trigger">Sign up</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- main content -->
+      <div class="container">
+        <div class="row">
+          <div class="col l9">
+            <h3 class="orange-text">kaffeeklatsch</h3>
+            <div class="divider"></div>
+            <h5>
+              Welcome {{username}}
+            </h5>
+            <div class="divider"></div>
+            <p>
+              Question 1 of survey will go here...
+            </p>
+            <a href="#/next" class=""><button class="btn btn-flat orange waves-effect waves-light white-text ">Next</button></a>
+
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div><!-- main content-->
+    </div><!-- left div-->
+  </div><!-- ng-contoller = root-->
+  <script type="text/javascript">
+    $(".button-collapse").sideNav();
+  </script>
