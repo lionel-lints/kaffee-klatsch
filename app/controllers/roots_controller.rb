@@ -6,4 +6,5 @@ class RootsController < ApplicationController
 
   def signout
   end
+
 end

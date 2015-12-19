@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'homes', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="homeApp">
-  <div ng-view></div>
+<body ng-app="homeApp" ng-init="userId = <%= current_user.id %>">
+  <div ng-view ></div>
 </body>
 </html>

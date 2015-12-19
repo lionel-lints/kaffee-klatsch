@@ -25,7 +25,8 @@ app.controller("rootCtrl", ['$scope', '$http', function($scope, $http) {
       }
     }).then(function successCallback(response) {
       if (response.data){
-        window.location = '/home/';
+        console.log("callback happening");
+        window.location = "/home/";
       }
     });
   };
@@ -41,7 +42,7 @@ app.controller("rootCtrl", ['$scope', '$http', function($scope, $http) {
       }
     }).then(function successCallback(response) {
       if (response.data){
-        window.location = '/home/';
+        window.location = "/home/";
       }
     });
   };

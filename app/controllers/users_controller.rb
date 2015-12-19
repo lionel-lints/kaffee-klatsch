@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :verified_request?
   before_action :authenticate, only: %i(show update destroy)
-  before_action :new_user?, only: %i(create)
+  # before_action :new_user?, only: %i(create)
   respond_to :html, :json
 
   def show
@@ -11,7 +11,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
+      p "!!!!!!!!!!!!!!!!!!!!!!!!"
+      p @user
+      p '!!!!!!!!!!!!!!!!!!!!!!!!!!'
       render json: true
     else
       render json: false
@@ -47,9 +51,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :password)
     end
 
-    def new_user?
-      if current_user != nil
-        redirect_to user_path(session[:user_id]),  notice: 'User is already logged in.'
-      end
-    end
+    # def new_user?
+    #   if current_user != nil
+    #     redirect_to user_path(session[:user_id]),  notice: 'User is already logged in.'
+    #   end
+    # end
 end

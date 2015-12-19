@@ -33,43 +33,43 @@
             <div class="divider"></div>
           </div>
         </div>
-        <!--login modal-->
+        <!--sign in modal-->
         <div id="modalLogin" class="modal">
           <div class="modal-content">
-            <h2 class="center-align">Login</h2>
+            <h2 class="center-align">Sign In</h2>
             <div class="center-align">
               <div class="divider"></div>
-              <form class="col s12">
+              <form ng-submit="checkUser()" class="col s12">
                 <div class="row center-align">
                   <div class="input-field col m10 offset-m1 blue-text">
-                    <i class="mdi-action-account-circle prefix"></i>
-                    <input id="icon_prefix" type="text" class="validate">
+                    <i class="mdi mdi-action-account-circle prefix"></i>
+                    <input ng-model="username"id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Username</label>
+                    {{username}}
                   </div>
                   <div class="input-field col m10 offset-m1 blue-text">
                     <i class="mdi mdi-content-inbox prefix"></i>
-                    <input id="email_prefix" type="text" class="validate">
+                    <input ng-model="email" id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Email</label>
+                    {{email}}
                   </div>
                   <div class="input-field col m10 offset-m1 blue-text ">
                     <i class="mdi-action-lock-open prefix"></i>
-                    <input id="icon_password" type="password" class="validate">
-                    <label for="icon_password">Password</label>
+                    <input ng-model="password" id="icon_password" type="password" class="validate">
+                    <label for="icon_prefix">Password</label>
+                    {{password}}
                   </div>
                 </div>
+                <div class="divider"></div>
+                <button type="submit"  class="waves-effect waves-blue blue btn btn-flat modal-action modal-close">Sign In</button>
               </form>
-              <div class="divider"></div>
-              <p>
-                <a href="#" class="btn btn-flat white modal-close">Cancel</a> &nbsp;
-                <a href="#" class="waves-effect waves-blue blue btn btn-flat modal-action modal-close">Login</a>
-              </p>
-             </div> <!--center align -->
+            </div>
           </div>
-        </div> <!--login modal-->
+        </div><!-- modal sign up-->
         <!--sign up modal-->
         <div id="modalSignup" class="modal">
           <div class="modal-content">
-            <h2 class="center-align">Sign up</h2>
+            <h2 class="center-align">Sign Up</h2>
             <div class="center-align">
               <div class="divider"></div>
               <form ng-submit="addUser()" class="col s12">
@@ -94,7 +94,7 @@
                   </div>
                 </div>
                 <div class="divider"></div>
-                <button type="submit"  class="waves-effect waves-blue blue btn btn-flat modal-action modal-close">Login</button>
+                <button type="submit"  class="waves-effect waves-blue blue btn btn-flat modal-action modal-close">Sign Up</button>
               </form>
             </div>
           </div>
