@@ -1,5 +1,8 @@
   <div ng-controller="homeCtrl" class="">
     <div class="right">
+      <div class="">
+        <div id="container" style="width:80%; height:400px;"></div>
+      </div>
     </div>
     <div class="left">
       <!-- nav bar -->
@@ -8,8 +11,9 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
           <a href="#!" class="brand-logo">&nbsp;KAFFEE-KLATSCH</a>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="#modalLogin" class="modal-trigger">Sign in</a></li>
-            <li><a href="#modalSignup" class="modal-trigger">Sign up</a></li>
+            <li><a href="" class="">About Kaffeeklatsch</a></li>
+            <li><a href="" class="">My Profile</a></li>
+            <li><a ng-click="logOutUser()" class="">Sign Out</a></li>
           </ul>
         </div>
       </nav>
@@ -20,7 +24,7 @@
             <h3 class="orange-text">kaffeeklatsch</h3>
             <div class="divider"></div>
             <h5>
-              Welcome {{username}}
+              Welcome {{user.username}}
             </h5>
             <div class="divider"></div>
             <p>

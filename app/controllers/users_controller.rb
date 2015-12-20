@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :verified_request?
   before_action :authenticate, only: %i(show update destroy)
   # before_action :new_user?, only: %i(create)
-  respond_to :html, :json
+  # respond_to :html, :json
 
   def show
     @user = User.find(params[:id])
@@ -13,9 +13,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      p "!!!!!!!!!!!!!!!!!!!!!!!!"
-      p @user
-      p '!!!!!!!!!!!!!!!!!!!!!!!!!!'
       render json: true
     else
       render json: false

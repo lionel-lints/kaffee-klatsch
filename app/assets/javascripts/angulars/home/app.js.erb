@@ -6,8 +6,31 @@ app.config(['$routeProvider', function($routeProvider) {
       controller : 'homeCtrl',
       templateUrl : "<%= asset_path('angulars/home/index.html') %>"
     });
+    // .when('/signout', {
+    //   controller : 'homeCtrl',
+    //   templateUrl : "<%= asset_path('angulars/home/index.html') %>"
+    // });
 }]);
 
-app.controller('homeCtrl', ['$scope', function($scope) {
-  $scope.username = 'jimmy';
+app.service('userInitializer', function(){
+  return <%= @user.to_json.html_safe %>;
+});
+
+app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
+
+console.log($scope.user);
+
+  $scope.logOutUser = function() {
+    $http({
+      method: 'POST',
+      url: '/signout'
+    }).then(function successCallback(response) {
+      if (response.data){
+        window.location = "/";
+      } else {
+        console.log(response);
+        console.log("user was not logged out");
+      }
+    });
+  };
 }]);
