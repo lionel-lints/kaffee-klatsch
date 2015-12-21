@@ -18,8 +18,6 @@ app.service('userInitializer', function(){
 
 app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
 
-console.log($scope.user);
-
   $scope.logOutUser = function() {
     $http({
       method: 'POST',
@@ -30,6 +28,27 @@ console.log($scope.user);
       } else {
         console.log(response);
         console.log("user was not logged out");
+      }
+    });
+  };
+}]);
+
+app.controller('surveyCtrl', ['$scope', '$http', function($scope, $http) {
+
+  $scope.addSurvey = function (){
+    $http({
+      method: 'POST',
+      url: '/users/'+ $scope.user.id + '/surveys',
+      data: {
+        user_id: $scope.user.id,
+        emotions: this.emotions,
+        coffees: this.coffees
+      }
+    }).then(function successCallback(response) {
+      if (response.data){
+        $scope.checkUser();
+      } else {
+
       }
     });
   };

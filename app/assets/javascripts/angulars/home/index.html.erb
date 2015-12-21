@@ -24,12 +24,27 @@
           <h3 class="orange-text">kaffeeklatsch</h3>
           <div class="divider"></div>
           <h5>
-            Welcome {{user.username}}
+            Welcome {{user.username}}!
           </h5>
           <div class="divider"></div>
-          <p>
-            Question 1 of survey will go here...
-          </p>
+          <div ng-controller="surveyCtrl" class="center-align">
+            <form ng-submit="addSurvey()" class="col s12">
+              <div class="row center-align">
+                <div class="input-field col m10 offset-m1 blue-text">
+                  <label for="coffees">How many cups of coffee have you had today?</label><br/>
+                  <input ng-model="coffees"id="coffees" type="text" class="validate">
+                  {{coffees}}
+                </div>
+                <div class="input-field col m10 offset-m1 blue-text">
+                  <label for="icon_prefix">How are you feeling right now?</label>
+                  <input ng-model="emotions" id="icon_prefix" type="text" class="validate">
+                  {{emotions}}
+                </div>
+              </div>
+              <div class="divider"></div>
+              <button type="submit"  class="btn btn-flat orange waves-effect waves-light white-text ">KLATSCH</button>
+            </form>
+          </div>
           <a href="#/next" class=""><button class="btn btn-flat orange waves-effect waves-light white-text ">Next</button></a>
 
           <div class="divider"></div>
