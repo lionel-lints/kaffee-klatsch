@@ -70,6 +70,8 @@ GEM
     ffi (1.9.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    highcharts-rails (3.0.10)
+      railties (>= 3.1)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -174,6 +176,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  highcharts-rails (~> 3.0.0)
   httparty
   jbuilder (~> 2.0)
   jquery-rails
