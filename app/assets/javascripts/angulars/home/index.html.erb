@@ -43,7 +43,7 @@
                 </div>
               </div>
 
-              <button ng-hide="surveyPage" type="submit" class="btn btn-flat orange waves-effect waves-light white-text ">KLATSCH</button>
+              <button ng-hide="surveyPage" ng-disabled="surveyPage" type="submit" class="btn btn-flat orange waves-effect waves-light white-text ">KLATSCH</button>
               <div ng-hide="surveyPage" class="divider"></div>
             </form>
           </div>
@@ -169,7 +169,7 @@ $(function () {
           name: dataset.name,
           type: dataset.type,
           color: Highcharts.getOptions().colors[i],
-          fillOpacity: 0.3,
+          fillOpacity: 0.1,
           tooltip: {
             valueSuffix: ' ' + dataset.unit
           }

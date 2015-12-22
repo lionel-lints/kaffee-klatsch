@@ -11,7 +11,6 @@ app.config(['$routeProvider', function($routeProvider) {
     //   templateUrl : "<%= asset_path('angulars/home/index.html') %>"
     // });
 }]);
-
 app.service('userInitializer', function(){
   return <%= @user.to_json.html_safe %>;
 });
