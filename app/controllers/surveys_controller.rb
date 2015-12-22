@@ -27,10 +27,6 @@ class SurveysController < ApplicationController
     #put the response in a hash
     hash = JSON.parse response.body
 
-    p "Open Weather Response!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    p 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat.to_s + '&units=imperial&lon=' + lon.to_s + '&appid=' + ENV['COFFEE_TIME_APP']
-    p "Open Weather Response end!!!!!!!!!!!!!!!!!!!!!!"
-
     @user = User.find(params[:user_id])
 
     #add location and weather data to the survey
@@ -39,10 +35,11 @@ class SurveysController < ApplicationController
     # @survey = @user.surveys.create survey_params
 
     if @survey.save
-      #rerender the page with the new data?
       p "Survey saved to DB!!!!!!!!!!!!!!!!!!!!!!"
+      render json: true
     else
       p "Survey failed to DB!!!!!!!!!!!!!!!!!!!!!!"
+      render json: false
     end
   end
 

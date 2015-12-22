@@ -25,6 +25,7 @@ app.controller("rootCtrl", ['$scope', '$http', function($scope, $http) {
       }
     }).then(function successCallback(response) {
       if (response.data){
+        console.log("callback");
         $scope.checkUser();
       }
     });

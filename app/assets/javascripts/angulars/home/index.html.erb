@@ -30,23 +30,23 @@
           <div ng-controller="surveyCtrl" class="center-align">
             <form ng-submit="addSurvey()" class="col s12">
               <div class="row center-align">
-                <div class="input-field col m10 offset-m1 blue-text">
+                <div ng-show="surveyPage" class="input-field col m10 offset-m1 blue-text">
                   <label for="coffees">How many cups of coffee have you had today?</label><br/>
                   <input ng-model="coffees"id="coffees" type="text" class="validate">
                   {{coffees}}
                 </div>
-                <div class="input-field col m10 offset-m1 blue-text">
+                <button ng-show="surveyPage" type="button" ng-click="pageSwitch()" class="btn btn-flat orange waves-effect waves-light white-text ">Next</button>
+                <div ng-hide="surveyPage" class="input-field col m10 offset-m1 blue-text">
                   <label for="icon_prefix">How are you feeling right now?</label>
-                  <input ng-model="emotions" id="icon_prefix" type="text" class="validate">
-                  {{emotions}}
+                  <input ng-model="emotion" id="icon_prefix" type="text" class="validate">
+                  {{emotion}}
                 </div>
               </div>
-              <div class="divider"></div>
-              <button type="submit"  class="btn btn-flat orange waves-effect waves-light white-text ">KLATSCH</button>
+
+              <button ng-hide="surveyPage" type="submit" class="btn btn-flat orange waves-effect waves-light white-text ">KLATSCH</button>
+              <div ng-hide="surveyPage" class="divider"></div>
             </form>
           </div>
-          <a href="#/next" class=""><button class="btn btn-flat orange waves-effect waves-light white-text ">Next</button></a>
-
           <div class="divider"></div>
         </div>
       </div>
