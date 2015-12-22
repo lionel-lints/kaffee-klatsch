@@ -30,17 +30,18 @@ class SurveysController < ApplicationController
 
     @user = User.find(params[:user_id])
     @survey = @user.surveys.create survey_params.merge(:weatherMain => hash['weather'][0]['main'], :weatherDesc => hash['weather'][0]['description'], :dayTempHi => hash['main']['temp_max'], :dayTempLow => hash['main']['temp_min'], :currentTemp => hash['main']['temp'])
-    @user = User.find(params[:user_id])
-    @survey = @user.surveys.create survey_params
 
-    respond_to do |format|
-      if @survey.save
-        format.html { redirect_to user_surveys_path(@user, @survey), notice: 'Survey was successfully created.' }
-        format.json { render :show, status: :created, location: @survey }
-      else
-        format.html { render :new }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
-      end
+    # @user = User.find(params[:user_id])
+    # @survey = @user.surveys.create survey_params
+
+    if @survey.save
+      #rerender the page with the new data?
+      p "Survey saved to DB!!!!!!!!!!!!!!!!!!!!!!"
+      render json: true
+    else
+      p "Survey failed to DB!!!!!!!!!!!!!!!!!!!!!!"
+      render json: false
+
     end
   end
 
