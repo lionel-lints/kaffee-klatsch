@@ -66,7 +66,7 @@ $(function () {
     point,
     i;
 
-    for (i = 0; i < Highcharts.charts.length; i = i + 1) {
+    for (i = 0; i < 3; i = i + 1) {
       chart = Highcharts.charts[i];
       e = chart.pointer.normalize(e); // Find coordinates within the chart
       point = chart.series[0].searchPoint(e, true); // Get the hovered point
