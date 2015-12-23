@@ -1,0 +1,108 @@
+  <div ng-controller="rootCtrl" class="">
+    <div class="right">
+    </div>
+    <div class="left">
+      <!-- nav bar -->
+      <nav class="navbar-fixed orange darken-3">
+        <div class="nav-wrapper container">
+          <ul class="left hide-on-med-and-down">
+            <li><a href="#modalLogin" class="modal-trigger">Sign in</a></li>
+            <li><a href="#modalSignup" class="modal-trigger">Sign up</a></li>
+          </ul>
+          <a href="#!" class="brand-logo">&nbsp;KAFFEE-KLATSCH</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="#modalLogin" class="modal-trigger">Sign in</a></li>
+            <li><a href="#modalSignup" class="modal-trigger">Sign up</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- main content -->
+      <div class="container">
+        <div class="row">
+          <div class="col l9">
+            <h3 class="orange-text">kaffeeklatsch</h3>
+            <div class="divider"></div>
+            <h5>
+              Track your mood, your<br />coffee intake, and the<br />weather to discover when<br />you’re at your best!
+            </h5>
+
+            <a href="#modalSignup" class="modal-trigger"><button class="btn btn-flat orange waves-effect waves-light white-text ">Sign up</button></a>
+            <a href="#modalLogin" class="modal-trigger"><button class="btn btn-flat orange waves-effect waves-light white-text ">Sign in</button></a>
+
+            <div class="divider"></div>
+          </div>
+        </div>
+        <!--sign in modal-->
+        <div id="modalLogin" class="modal">
+          <div class="modal-content">
+            <h2 class="center-align">Sign In</h2>
+            <div class="center-align">
+              <div class="divider"></div>
+              <form ng-submit="checkUser()" class="col s12">
+                <div class="row center-align">
+                  <div class="input-field col m10 offset-m1 blue-text">
+                    <i class="mdi mdi-action-account-circle prefix"></i>
+                    <input ng-model="username"id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Username</label>
+                    {{username}}
+                  </div>
+                  <div class="input-field col m10 offset-m1 blue-text">
+                    <i class="mdi mdi-content-inbox prefix"></i>
+                    <input ng-model="email" id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Email</label>
+                    {{email}}
+                  </div>
+                  <div class="input-field col m10 offset-m1 blue-text ">
+                    <i class="mdi-action-lock-open prefix"></i>
+                    <input ng-model="password" id="icon_password" type="password" class="validate">
+                    <label for="icon_prefix">Password</label>
+                    {{password}}
+                  </div>
+                </div>
+                <div class="divider"></div>
+                <button type="submit"  class="waves-effect waves-blue blue btn btn-flat modal-action modal-close">Sign In</button>
+              </form>
+            </div>
+          </div>
+        </div><!-- modal sign up-->
+        <!--sign up modal-->
+        <div id="modalSignup" class="modal">
+          <div class="modal-content">
+            <h2 class="center-align">Sign Up</h2>
+            <div class="center-align">
+              <div class="divider"></div>
+              <form ng-submit="addUser()" class="col s12">
+                <div class="row center-align">
+                  <div class="input-field col m10 offset-m1 blue-text">
+                    <i class="mdi mdi-action-account-circle prefix"></i>
+                    <input ng-model="username"id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Username</label>
+                    {{username}}
+                  </div>
+                  <div class="input-field col m10 offset-m1 blue-text">
+                    <i class="mdi mdi-content-inbox prefix"></i>
+                    <input ng-model="email" id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Email</label>
+                    {{email}}
+                  </div>
+                  <div class="input-field col m10 offset-m1 blue-text ">
+                    <i class="mdi-action-lock-open prefix"></i>
+                    <input ng-model="password" id="icon_password" type="password" class="validate">
+                    <label for="icon_prefix">Password</label>
+                    {{password}}
+                  </div>
+                </div>
+                <div class="divider"></div>
+                <button type="submit"  class="waves-effect waves-blue blue btn btn-flat modal-action modal-close">Sign Up</button>
+              </form>
+            </div>
+          </div>
+        </div><!-- modal sign up-->
+      </div><!-- main content-->
+    </div><!-- left div-->
+  </div><!-- ng-contoller = root-->
+  <script type="text/javascript">
+    $(".button-collapse").sideNav();
+    $('.modal-trigger').leanModal();
+  </script>

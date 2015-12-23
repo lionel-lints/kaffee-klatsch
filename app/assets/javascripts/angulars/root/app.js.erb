@@ -1,0 +1,49 @@
+var app = angular.module("rootApp", ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      controller : 'rootCtrl',
+      templateUrl : "<%= asset_path('angulars/root/index.html') %>"
+    });
+    // .otherwise({
+    //   redirectTo : '/'
+    // });
+}]);
+
+
+app.controller("rootCtrl", ['$scope', '$http', function($scope, $http) {
+
+  $scope.addUser = function() {
+    $http({
+      method: 'POST',
+      url: '/users',
+      data: {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      }
+    }).then(function successCallback(response) {
+      if (response.data){
+        console.log("callback");
+        $scope.checkUser();
+      }
+    });
+  };
+
+  $scope.checkUser = function() {
+    $http({
+      method: 'POST',
+      url: '/signin',
+      data: {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      }
+    }).then(function successCallback(response) {
+      if (response.data){
+        window.location = "/home/";
+      }
+    });
+  };
+}]);

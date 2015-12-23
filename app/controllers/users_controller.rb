@@ -1,24 +1,21 @@
 class UsersController < ApplicationController
+  before_action :verified_request?
   before_action :authenticate, only: %i(show update destroy)
-  before_action :new_user?, only: %i(create)
+  # before_action :new_user?, only: %i(create)
+  # respond_to :html, :json
 
   def show
     @user = User.find(params[:id])
-    p @user
     @surveys = @user.surveys.all
   end
 
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { render :show, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      render json: true
+    else
+      render json: false
     end
   end
 
@@ -48,12 +45,12 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:username, :email, :password)
     end
 
-    def new_user?
-      if current_user != nil
-        redirect_to user_path(session[:user_id]),  notice: 'User is already logged in.'
-      end
-    end
+    # def new_user?
+    #   if current_user != nil
+    #     redirect_to user_path(session[:user_id]),  notice: 'User is already logged in.'
+    #   end
+    # end
 end

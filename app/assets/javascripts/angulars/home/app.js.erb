@@ -1,0 +1,62 @@
+var app = angular.module("homeApp", ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      controller : 'homeCtrl',
+      templateUrl : "<%= asset_path('angulars/home/index.html') %>"
+    });
+    // .when('/signout', {
+    //   controller : 'homeCtrl',
+    //   templateUrl : "<%= asset_path('angulars/home/index.html') %>"
+    // });
+}]);
+app.service('userInitializer', function(){
+  return <%= @user.to_json.html_safe %>;
+});
+
+app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
+
+  $scope.logOutUser = function() {
+    $http({
+      method: 'POST',
+      url: '/signout'
+    }).then(function successCallback(response) {
+      if (response.data){
+        window.location = "/";
+      } else {
+        console.log(response);
+        console.log("user was not logged out");
+      }
+    });
+  };
+}]);
+
+app.controller('surveyCtrl', ['$scope', '$http', function($scope, $http) {
+  $scope.surveyPage = true;
+  $scope.pageSwitch = function (){
+    $scope.surveyPage = !$scope.surveyPage;
+  };
+  $scope.addSurvey = function (){
+    $http({
+      method: 'POST',
+      url: '/users/'+ $scope.user.id + '/surveys',
+      data: {
+        user_id: $scope.user.id,
+        emotion: parseFloat(this.emotion),
+        coffees: parseInt(this.coffees)
+      }
+    }).then(function successCallback(response) {
+      if (response.data){
+        console.log(response.data);
+        $scope.emotion = '';
+        $scope.coffees = '';
+        $scope.surveyPage = true;
+        // $window.location.reload();
+      } else {
+        console.log(response);
+        console.log("survey failed");
+      }
+    });
+  };
+}]);

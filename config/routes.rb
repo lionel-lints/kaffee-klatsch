@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  root :to => 'application#angular'
-  resource :sessions, only: [:create, :destroy]
+
+  root :to => 'roots#landing'
+  post 'signout' => 'roots#signout', as: :signout
+  get 'home' => 'homes#show', as: :home
+  post 'signin' => 'homes#signin', as: :signin
+
+  # resource :sessions, only: [:create, :destroy]
   resources :users , only: [:show, :create, :update, :destroy] do
     resources :surveys, shallow: true
   end

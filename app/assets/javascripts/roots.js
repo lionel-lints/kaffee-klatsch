@@ -14,11 +14,9 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-route
-//= require angular-animate
 //= require angular-resource
-//= require angular-rails-templates
-//= require_tree ./templates
 //= require materialize.min.js
 //= require materialize-sprockets
-//= require materialize/extras/nouislider
-//= require_tree .
+//= require highcharts
+//= require highcharts/highcharts-more
+//= require angulars/root/app.js
