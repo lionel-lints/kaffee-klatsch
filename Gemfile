@@ -30,7 +30,6 @@ gem 'bcrypt', :require => 'bcrypt'
 
 gem "httparty"
 gem "typhoeus"
-gem "highcharts-rails", "~> 3.0.0"
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -15,8 +15,8 @@
 //= require angular
 //= require angular-route
 //= require angular-resource
+//= require d3.min.js
 //= require materialize.min.js
 //= require materialize-sprockets
-//= require highcharts
-//= require highcharts/highcharts-more
+//= require LineChart.js
 //= require angulars/home/app.js

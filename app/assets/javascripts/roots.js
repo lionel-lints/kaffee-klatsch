@@ -17,6 +17,4 @@
 //= require angular-resource
 //= require materialize.min.js
 //= require materialize-sprockets
-//= require highcharts
-//= require highcharts/highcharts-more
 //= require angulars/root/app.js

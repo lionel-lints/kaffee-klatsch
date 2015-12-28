@@ -31,27 +31,17 @@ class SurveysController < ApplicationController
 
     #add location and weather data to the survey
     @survey = @user.surveys.create survey_params.merge(:weatherMain => hash['weather'][0]['main'], :weatherDesc => hash['weather'][0]['description'], :dayTempHi => hash['main']['temp_max'], :dayTempLow => hash['main']['temp_min'], :currentTemp => hash['main']['temp'])
-<<<<<<< HEAD
 
-=======
->>>>>>> refactor_0.1
     # @user = User.find(params[:user_id])
     # @survey = @user.surveys.create survey_params
 
     if @survey.save
-<<<<<<< HEAD
       #rerender the page with the new data?
-=======
->>>>>>> refactor_0.1
       p "Survey saved to DB!!!!!!!!!!!!!!!!!!!!!!"
       render json: true
     else
       p "Survey failed to DB!!!!!!!!!!!!!!!!!!!!!!"
       render json: false
-<<<<<<< HEAD
-
-=======
->>>>>>> refactor_0.1
     end
   end
 
