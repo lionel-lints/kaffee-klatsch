@@ -7,17 +7,9 @@ app.config(['$routeProvider', function($routeProvider) {
       controller : 'homeCtrl',
       templateUrl : "<%= asset_path('angulars/home/index.html') %>"
     });
-    // .when('/signout', {
-    //   controller : 'homeCtrl',
-    //   templateUrl : "<%= asset_path('angulars/home/index.html') %>"
-    // });
 }]);
-// app.service('userInitializer', function(){
-//   return <%= @user.to_json.html_safe %>;
-// });
 
 app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
-
   $scope.logOutUser = function() {
     $http({
       method: 'POST',
@@ -52,7 +44,7 @@ app.controller('surveyCtrl', ['$scope', '$http', function($scope, $http) {
         $scope.emotion = '';
         $scope.coffees = '';
         $scope.surveyPage = true;
-        // $window.location.reload();
+        window.location.reload(true);
       } else {
         console.log(response);
         console.log("survey failed");
@@ -66,13 +58,11 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.data = { coffeeDataset: [] };
 
   for (var i = 0; i < $scope.surveys.length; i++) {
-    console.log($scope.surveys[i].updated_at);
     $scope.data.coffeeDataset.push({ x: new Date ($scope.surveys[i].updated_at), coffees: $scope.surveys[i].coffees});
     if ($scope.surveys[i].coffees > dataMax) {
       dataMax = $scope.surveys[i].coffees + 1;
     }
   }
-  console.log($scope.data.coffeeDataset);
   $scope.options = {
        series: [
          {
@@ -112,7 +102,6 @@ app.controller('emotionChartCtrl', ['$scope', '$http', function($scope, $http) {
   for (var i = 0; i < $scope.surveys.length; i++) {
     $scope.data.emotionDataset.push({ x: new Date ($scope.surveys[i].updated_at) , emotion: $scope.surveys[i].emotion});
   }
-console.log($scope.data.emotionDataset);
   $scope.options = {
        series: [
          {
@@ -159,7 +148,6 @@ app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
       dataMin = parseFloat($scope.surveys[i].currentTemp) - 15;
     }
   }
-  console.log(dataMax);
   $scope.options = {
        series: [
          {

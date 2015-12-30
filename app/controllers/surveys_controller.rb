@@ -35,7 +35,6 @@ class SurveysController < ApplicationController
     # p hash
     # p"after merge !!!!!!!!!!!!!!!!!!!!!!!!!"
     if @survey.save
-      #rerender the page with the new data?
       p "Survey saved to DB!!!!!!!!!!!!!!!!!!!!!!"
       render json: true
     else
