@@ -11,3 +11,6 @@
   background-image: linear-gradient(45deg, #EB620C, #FCB300 );
   position:absolute;
 }
+svg .chart-tooltip {
+  background-color: rgba(0, 0, 0, 0.1);
+}
