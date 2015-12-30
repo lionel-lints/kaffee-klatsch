@@ -68,7 +68,7 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
 
   for (var i = 0; i < $scope.surveys.length; i++) {
     console.log($scope.surveys[i].updated_at);
-    $scope.data.coffeeDataset.push({ x: i, coffees: $scope.surveys[i].coffees});
+    $scope.data.coffeeDataset.push({ x: new Date ($scope.surveys[i].updated_at), coffees: $scope.surveys[i].coffees});
     if ($scope.surveys[i].coffees > dataMax) {
       dataMax = $scope.surveys[i].coffees + 1;
     }
@@ -88,7 +88,7 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
        ],
        axes:
        {
-         x: {key: "x", ticks:10, ticksShift: {y: 5, x: 0}},
+         x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
          y: {min:0, max: dataMax, ticks: 5}
        },
        margin:
@@ -112,7 +112,7 @@ app.controller('emotionChartCtrl', ['$scope', '$http', function($scope, $http) {
   let dataMax = 0;
   $scope.data = { emotionDataset: [] };
   for (var i = 0; i < $scope.surveys.length; i++) {
-    $scope.data.emotionDataset.push({ x: i , emotion: $scope.surveys[i].emotion});
+    $scope.data.emotionDataset.push({ x: new Date ($scope.surveys[i].updated_at) , emotion: $scope.surveys[i].emotion});
     if ($scope.surveys[i].emotion > dataMax) {
       dataMax = $scope.surveys[i].emotion + 1;
     }
@@ -130,7 +130,10 @@ console.log($scope.data.emotionDataset);
            id: 'mySeries0'
          }
        ],
-       axes: {x: {key: "x", ticks:8, ticksShift: {y: 5, x: 0}}, y: {min:0, max: dataMax, ticks: 5}},
+       axes: {
+         x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
+         y: {min:0, max: dataMax, ticks: 5}
+       },
        margin:
        {
          top: 30,

@@ -26,15 +26,14 @@ class SurveysController < ApplicationController
 
     #put the response in a hash
     hash = JSON.parse response.body
-
+    # p "!!!!!!!!!!!!!!!!!!!!!! before merge"
+    # p hash
     @user = User.find(params[:user_id])
 
     #add location and weather data to the survey
     @survey = @user.surveys.create survey_params.merge(:weatherMain => hash['weather'][0]['main'], :weatherDesc => hash['weather'][0]['description'], :dayTempHi => hash['main']['temp_max'], :dayTempLow => hash['main']['temp_min'], :currentTemp => hash['main']['temp'])
-
-    # @user = User.find(params[:user_id])
-    # @survey = @user.surveys.create survey_params
-
+    # p hash
+    # p"after merge !!!!!!!!!!!!!!!!!!!!!!!!!"
     if @survey.save
       #rerender the page with the new data?
       p "Survey saved to DB!!!!!!!!!!!!!!!!!!!!!!"
@@ -64,6 +63,6 @@ class SurveysController < ApplicationController
   private
 
     def survey_params
-      params.require(:survey).permit(:coffees, :emotion)
+      params.require(:survey).permit(:coffees, :emotion, :user_id)
     end
 end
