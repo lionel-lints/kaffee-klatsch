@@ -1,3 +1,4 @@
+"use strict"
 var app = angular.module("homeApp", ['ngRoute', 'n3-line-chart']);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -62,36 +63,34 @@ app.controller('surveyCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
-  $scope.data = {
-    coffeeDataset: [
-      {x: 0, val_0: 0},
-      {x: 1, val_0: 0.993},
-      {x: 2, val_0: 1.947},
-      {x: 3, val_0: 2.823},
-      {x: 4, val_0: 3.587},
-      {x: 5, val_0: 4.207},
-      {x: 6, val_0: 4.66},
-      {x: 7, val_0: 4.927},
-      {x: 8, val_0: 3.587},
-      {x: 9, val_0: 4.207},
-      {x: 10, val_0: 4.66},
-      {x: 11, val_0: 4.927}
-    ]
-  };
+  let dataMax = 0;
+  $scope.data = { coffeeDataset: [] };
 
+  for (var i = 0; i < $scope.surveys.length; i++) {
+    console.log($scope.surveys[i].updated_at);
+    $scope.data.coffeeDataset.push({ x: i, coffees: $scope.surveys[i].coffees});
+    if ($scope.surveys[i].coffees > dataMax) {
+      dataMax = $scope.surveys[i].coffees + 1;
+    }
+  }
+  console.log($scope.data.coffeeDataset);
   $scope.options = {
        series: [
          {
            axis: "y",
            dataset: "coffeeDataset",
-           key: "val_0",
+           key: "coffees",
            label: "Coffees over the day",
            color: "#1f77b4",
            type: ['line', 'dot'],
            id: 'mySeries0'
          }
        ],
-       axes: {x: {key: "x", ticks:8, ticksShift: {y: 5, x: 0}}, y: {min:0, max:5, ticks: 5}},
+       axes:
+       {
+         x: {key: "x", ticks:10, ticksShift: {y: 5, x: 0}},
+         y: {min:0, max: dataMax, ticks: 5}
+       },
        margin:
        {
          top: 30,
@@ -110,32 +109,28 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('emotionChartCtrl', ['$scope', '$http', function($scope, $http) {
-  $scope.data = {
-    emotionDataset: [
-      {x: 0, val_0: 0},
-      {x: 1, val_0: 0.993},
-      {x: 2, val_0: 1.947},
-      {x: 3, val_0: 2.823},
-      {x: 4, val_0: 3.587},
-      {x: 5, val_0: 4.207},
-      {x: 6, val_0: 4.66},
-      {x: 7, val_0: 4.927}
-    ]
-  };
-
+  let dataMax = 0;
+  $scope.data = { emotionDataset: [] };
+  for (var i = 0; i < $scope.surveys.length; i++) {
+    $scope.data.emotionDataset.push({ x: i , emotion: $scope.surveys[i].emotion});
+    if ($scope.surveys[i].emotion > dataMax) {
+      dataMax = $scope.surveys[i].emotion + 1;
+    }
+  }
+console.log($scope.data.emotionDataset);
   $scope.options = {
        series: [
          {
            axis: "y",
            dataset: "emotionDataset",
-           key: "val_0",
-           label: "How you've been feeling today",
+           key: "emotion",
+           label: "How you've been feeling",
            color: "#1f77b4",
            type: ['line', 'dot'],
            id: 'mySeries0'
          }
        ],
-       axes: {x: {key: "x", ticks:8, ticksShift: {y: 5, x: 0}}, y: {min:0, max:5, ticks: 5}},
+       axes: {x: {key: "x", ticks:8, ticksShift: {y: 5, x: 0}}, y: {min:0, max: dataMax, ticks: 5}},
        margin:
        {
          top: 30,
