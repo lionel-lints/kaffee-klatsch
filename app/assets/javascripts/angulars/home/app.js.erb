@@ -109,13 +109,9 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('emotionChartCtrl', ['$scope', '$http', function($scope, $http) {
-  let dataMax = 0;
   $scope.data = { emotionDataset: [] };
   for (var i = 0; i < $scope.surveys.length; i++) {
     $scope.data.emotionDataset.push({ x: new Date ($scope.surveys[i].updated_at) , emotion: $scope.surveys[i].emotion});
-    if ($scope.surveys[i].emotion > dataMax) {
-      dataMax = $scope.surveys[i].emotion + 1;
-    }
   }
 console.log($scope.data.emotionDataset);
   $scope.options = {
@@ -132,7 +128,7 @@ console.log($scope.data.emotionDataset);
        ],
        axes: {
          x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
-         y: {min:0, max: dataMax, ticks: 5}
+         y: {min:0, max: 5, ticks: 5}
        },
        margin:
        {
@@ -152,51 +148,35 @@ console.log($scope.data.emotionDataset);
 }]);
 
 app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
-  $scope.data = {
-    coffeeDataset: [
-      {x: 0, val_0: 0},
-      {x: 1, val_0: 0.993},
-      {x: 2, val_0: 1.947},
-      {x: 3, val_0: 2.823},
-      {x: 4, val_0: 3.587},
-      {x: 5, val_0: 4.207},
-      {x: 6, val_0: 4.66},
-      {x: 7, val_0: 4.927}
-    ],
-    emotionDataset: [
-      {x: 0, val_0: 0},
-      {x: 1, val_0: 0.993},
-      {x: 2, val_0: 1.947},
-      {x: 3, val_0: 2.823},
-      {x: 4, val_0: 3.587},
-      {x: 5, val_0: 4.207},
-      {x: 6, val_0: 4.66},
-      {x: 7, val_0: 4.927}
-    ]
-  };
-
+  let dataMax = 0;
+  let dataMin = 100;
+  $scope.data = { tempDataset: [] };
+  for (var i = 0; i < $scope.surveys.length; i++) {
+    $scope.data.tempDataset.push({ x: new Date ($scope.surveys[i].updated_at) , temp: $scope.surveys[i].currentTemp});
+    if ($scope.surveys[i].currentTemp > dataMax) {
+      dataMax = parseFloat($scope.surveys[i].currentTemp) + 15;
+    }
+    if ($scope.surveys[i].currentTemp < dataMin) {
+      dataMin = parseFloat($scope.surveys[i].currentTemp) - 15;
+    }
+  }
+  console.log(dataMax);
   $scope.options = {
        series: [
          {
            axis: "y",
-           dataset: "coffeeDataset",
-           key: "val_0",
-           label: "Coffees over the day",
-           color: "#1f77b4",
-           type: ['line', 'dot'],
-           id: 'mySeries0'
-         },
-         {
-           axis: "y",
-           dataset: "emotionDataset",
-           key: "val_0",
-           label: "How you've been feeling",
+           dataset: "tempDataset",
+           key: "temp",
+           label: "Temperature",
            color: "#1f77b4",
            type: ['line', 'dot'],
            id: 'mySeries0'
          }
        ],
-       axes: {x: {key: "x", ticks:8, ticksShift: {y: 5, x: 0}}, y: {min:0, max:5, ticks: 5}},
+       axes: {
+         x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
+         y: {min: dataMin, max: dataMax, ticks: 5}
+       },
        margin:
        {
          top: 30,
@@ -212,4 +192,4 @@ app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
        drawLegend: false
      };
 
-}]);
+  }]);
