@@ -6,6 +6,10 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/', {
       controller : 'homeCtrl',
       templateUrl : "<%= asset_path('angulars/home/index.html') %>"
+    })
+    .when('#/about', {
+      controller : 'homeCtrl',
+      templateUrl : "<%= asset_path('angulars/home/about.html') %>"
     });
 }]);
 
@@ -23,6 +27,9 @@ app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
       }
     });
   };
+}]);
+
+app.controller('aboutCtrl', ['$scope', function($scope) {
 }]);
 
 app.controller('surveyCtrl', ['$scope', '$http', function($scope, $http) {
@@ -69,12 +76,15 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
            axis: "y",
            dataset: "coffeeDataset",
            key: "coffees",
-           label: "Coffees over the day",
-           color: "#1f77b4",
-           type: ['line', 'dot'],
+           label: "Coffees",
+           color: "white",
+           type: ['line'],
            id: 'mySeries0'
          }
        ],
+       tooltipHook: function (array){
+
+       },
        axes:
        {
          x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
@@ -108,9 +118,9 @@ app.controller('emotionChartCtrl', ['$scope', '$http', function($scope, $http) {
            axis: "y",
            dataset: "emotionDataset",
            key: "emotion",
-           label: "How you've been feeling",
-           color: "#1f77b4",
-           type: ['line', 'dot'],
+           label: "Emotion",
+           color: "white",
+           type: ['line'],
            id: 'mySeries0'
          }
        ],
@@ -155,8 +165,8 @@ app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
            dataset: "tempDataset",
            key: "temp",
            label: "Temperature",
-           color: "#1f77b4",
-           type: ['line', 'dot'],
+           color: "white",
+           type: ['line'],
            id: 'mySeries0'
          }
        ],
