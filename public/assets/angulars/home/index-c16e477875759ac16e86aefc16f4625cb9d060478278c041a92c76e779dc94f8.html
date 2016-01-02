@@ -1,0 +1,64 @@
+<div  class="">
+  <div class="right">
+    <div ng-controller="coffeeChartCtrl"class="">
+      <linechart data="data" sync-key="tut" options="options" width="40%" height="150px" style="margin-top: 50px;"></linechart>
+    </div>
+    <div ng-controller="emotionChartCtrl"class="">
+      <linechart data="data" sync-key="tut" options="options" width="40%" height="150px" style="margin-top: 20px;"></linechart>
+    </div>
+    <div ng-controller="tempChartCtrl"class="">
+      <linechart data="data" sync-key="tut" options="options" width="40%" height="150px" style="margin-top: 20px;"></linechart>
+    </div>
+  </div>
+  <div ng-controller="homeCtrl" class="left">
+    <!-- nav bar -->
+    <nav class="navbar-fixed orange darken-3">
+      <div class="nav-wrapper container">
+        <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+        <a href="#!" class="brand-logo">&nbsp;KAFFEE-KLATSCH</a>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a ng-href="/home/#/about" class="">About Kaffeeklatsch</a></li>
+          <li><a href="" class="">My Profile</a></li>
+          <li><a ng-click="logOutUser()" class="">Sign Out</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- main content -->
+    <div class="container">
+      <div class="row">
+        <div class="col l9">
+          <h3 class="orange-text">kaffeeklatsch</h3>
+          <div class="divider"></div>
+          <h5>
+            Welcome {{user.username}}!
+          </h5>
+          <div class="divider"></div>
+          <div ng-controller="surveyCtrl" class="center-align">
+            <form ng-submit="addSurvey()" class="col s12">
+              <div class="row center-align">
+                <div ng-show="surveyPage" class="input-field col m10 offset-m1 blue-text">
+                  <label for="coffees">How many cups of coffee have you had today?</label><br/>
+                  <input ng-model="coffees"id="coffees" type="text" class="validate">
+                  {{coffees}}
+                </div>
+                <button ng-show="surveyPage" type="button" ng-click="pageSwitch()" class="btn btn-flat orange waves-effect waves-light white-text ">Next</button>
+                <div ng-hide="surveyPage" class="input-field col m10 offset-m1 blue-text">
+                  <label for="icon_prefix">How are you feeling right now?</label>
+                  <input ng-model="emotion" id="icon_prefix" type="text" class="validate">
+                  {{emotion}}
+                </div>
+              </div>
+
+              <button ng-hide="surveyPage" ng-disabled="surveyPage" type="submit" class="btn btn-flat orange waves-effect waves-light white-text ">KLATSCH</button>
+              <div ng-hide="surveyPage" class="divider"></div>
+            </form>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div><!-- main content-->
+  </div><!-- left div-->
+</div><!-- ng-contoller = root-->
+<script type="text/javascript">
+$(".button-collapse").sideNav();
+</script>
