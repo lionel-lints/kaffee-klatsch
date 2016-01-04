@@ -3,14 +3,14 @@ var app = angular.module("homeApp", ['ngRoute', 'n3-line-chart']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/', {
-      controller : 'homeCtrl',
-      templateUrl : "<%= asset_path('angulars/home/index.html') %>"
-    })
-    .when('#/about', {
-      controller : 'homeCtrl',
-      templateUrl : "<%= asset_path('angulars/home/about.html') %>"
-    });
+  .when('/', {
+    controller : 'homeCtrl',
+    templateUrl : "<%= asset_path('angulars/home/index.html') %>"
+  })
+  .when('#/about', {
+    controller : 'homeCtrl',
+    templateUrl : "<%= asset_path('angulars/home/about.html') %>"
+  });
 }]);
 
 app.controller('homeCtrl', ['$scope', '$http', function($scope, $http) {
@@ -71,39 +71,36 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
     }
   }
   $scope.options = {
-       series: [
-         {
-           axis: "y",
-           dataset: "coffeeDataset",
-           key: "coffees",
-           label: "Coffees",
-           color: "white",
-           type: ['line'],
-           id: 'mySeries0'
-         }
-       ],
-       tooltipHook: function (array){
-
-       },
-       axes:
-       {
-         x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
-         y: {min:0, max: dataMax, ticks: 5}
-       },
-       margin:
-       {
-         top: 30,
-         right: 30,
-         bottom: 30,
-         left: 30
-       },
-       grid:
-       {
-         x: false,
-         y: false
-       },
-       drawLegend: false
-     };
+    series: [
+      {
+        axis: "y",
+        dataset: "coffeeDataset",
+        key: "coffees",
+        label: "Coffees",
+        color: "white",
+        type: ['line'],
+        id: 'mySeries0'
+      }
+    ],
+    axes:
+    {
+      x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
+      y: {min:0, max: dataMax, ticks: 5}
+    },
+    margin:
+    {
+      top: 30,
+      right: 30,
+      bottom: 30,
+      left: 30
+    },
+    grid:
+    {
+      x: false,
+      y: false
+    },
+    drawLegend: false
+  };
 
 }]);
 
@@ -113,35 +110,35 @@ app.controller('emotionChartCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.data.emotionDataset.push({ x: new Date ($scope.surveys[i].updated_at) , emotion: $scope.surveys[i].emotion});
   }
   $scope.options = {
-       series: [
-         {
-           axis: "y",
-           dataset: "emotionDataset",
-           key: "emotion",
-           label: "Emotion",
-           color: "white",
-           type: ['line'],
-           id: 'mySeries0'
-         }
-       ],
-       axes: {
-         x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
-         y: {min:0, max: 5, ticks: 5}
-       },
-       margin:
-       {
-         top: 30,
-         right: 30,
-         bottom: 30,
-         left: 30
-       },
-       grid:
-       {
-         x: false,
-         y: false
-       },
-       drawLegend: false
-     };
+    series: [
+      {
+        axis: "y",
+        dataset: "emotionDataset",
+        key: "emotion",
+        label: "Emotion",
+        color: "white",
+        type: ['line'],
+        id: 'mySeries0'
+      }
+    ],
+    axes: {
+      x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
+      y: {min:0, max: 5, ticks: 5}
+    },
+    margin:
+    {
+      top: 30,
+      right: 30,
+      bottom: 30,
+      left: 30
+    },
+    grid:
+    {
+      x: false,
+      y: false
+    },
+    drawLegend: false
+  };
 
 }]);
 
@@ -159,34 +156,34 @@ app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
     }
   }
   $scope.options = {
-       series: [
-         {
-           axis: "y",
-           dataset: "tempDataset",
-           key: "temp",
-           label: "Temperature",
-           color: "white",
-           type: ['line'],
-           id: 'mySeries0'
-         }
-       ],
-       axes: {
-         x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
-         y: {min: dataMin, max: dataMax, ticks: 5}
-       },
-       margin:
-       {
-         top: 30,
-         right: 30,
-         bottom: 30,
-         left: 30
-       },
-       grid:
-       {
-         x: false,
-         y: false
-       },
-       drawLegend: false
-     };
+    series: [
+      {
+        axis: "y",
+        dataset: "tempDataset",
+        key: "temp",
+        label: "Temperature",
+        color: "white",
+        type: ['line'],
+        id: 'mySeries0'
+      }
+    ],
+    axes: {
+      x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
+      y: {min: dataMin, max: dataMax, ticks: 5}
+    },
+    margin:
+    {
+      top: 30,
+      right: 30,
+      bottom: 30,
+      left: 30
+    },
+    grid:
+    {
+      x: false,
+      y: false
+    },
+    drawLegend: false
+  };
 
-  }]);
+}]);
