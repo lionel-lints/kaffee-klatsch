@@ -12,6 +12,7 @@
  *
  *= require materialize
  *= require LineChart.css
+
  *= require_tree .
  *= require_self
  */
