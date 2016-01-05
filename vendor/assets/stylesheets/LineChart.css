@@ -8,6 +8,7 @@
                                                                     lorem--ipsum
 */
 .chart-legend {
+  display: none;
   margin-left: 20px; }
   .chart-legend .item {
     cursor: pointer;
@@ -64,6 +65,7 @@
   font-weight: 100; }
   .chart-tooltip > .abscissas {
     margin-bottom: 5px;
+    display:none;
     font-size: 0.7em;
     white-space: nowrap; }
   .chart-tooltip .tooltip-item {
