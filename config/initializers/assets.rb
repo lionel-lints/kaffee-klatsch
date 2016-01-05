@@ -12,4 +12,5 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile = %w(homes.js roots.js application.css)
 Rails.application.config.assets.precompile += %w( angulars/home/index.html angulars/home/about.html angulars/root/index.html)
+
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
