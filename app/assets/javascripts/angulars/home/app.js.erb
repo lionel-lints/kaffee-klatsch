@@ -1,4 +1,3 @@
-"use strict"
 var app = angular.module("homeApp", ['ngRoute', 'n3-line-chart']);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -61,13 +60,13 @@ app.controller('surveyCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
-  let dataMax = 0;
+  var coffeeDataMax = 0;
   $scope.data = { coffeeDataset: [] };
 
   for (var i = 0; i < $scope.surveys.length; i++) {
     $scope.data.coffeeDataset.push({ x: new Date ($scope.surveys[i].updated_at), coffees: $scope.surveys[i].coffees});
-    if ($scope.surveys[i].coffees > dataMax) {
-      dataMax = $scope.surveys[i].coffees + 1;
+    if ($scope.surveys[i].coffees > coffeedataMax) {
+      coffeedataMax = $scope.surveys[i].coffees + 1;
     }
   }
   $scope.options = {
@@ -85,7 +84,7 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
     axes:
     {
       x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
-      y: {min:0, max: dataMax, ticks: 5}
+      y: {min:0, max: coffeedataMax, ticks: 5}
     },
     margin:
     {
@@ -143,8 +142,8 @@ app.controller('emotionChartCtrl', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
-  let dataMax = 0;
-  let dataMin = 100;
+  var dataMax = 0;
+  var dataMin = 100;
   $scope.data = { tempDataset: [] };
   for (var i = 0; i < $scope.surveys.length; i++) {
     $scope.data.tempDataset.push({ x: new Date ($scope.surveys[i].updated_at) , temp: $scope.surveys[i].currentTemp});
