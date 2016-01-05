@@ -65,8 +65,8 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
 
   for (var i = 0; i < $scope.surveys.length; i++) {
     $scope.data.coffeeDataset.push({ x: new Date ($scope.surveys[i].updated_at), coffees: $scope.surveys[i].coffees});
-    if ($scope.surveys[i].coffees > coffeedataMax) {
-      coffeedataMax = $scope.surveys[i].coffees + 1;
+    if ($scope.surveys[i].coffees > coffeeDataMax) {
+      coffeeDataMax = $scope.surveys[i].coffees + 1;
     }
   }
   $scope.options = {
@@ -84,7 +84,7 @@ app.controller('coffeeChartCtrl', ['$scope', '$http', function($scope, $http) {
     axes:
     {
       x: {key: "x", type: 'date', ticks:5, ticksShift: {y: 5, x: 0}},
-      y: {min:0, max: coffeedataMax, ticks: 5}
+      y: {min:0, max: coffeeDataMax, ticks: 5}
     },
     margin:
     {
