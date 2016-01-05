@@ -146,7 +146,12 @@ app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
   var dataMin = 100;
   $scope.data = { tempDataset: [] };
   for (var i = 0; i < $scope.surveys.length; i++) {
-    $scope.data.tempDataset.push({ x: new Date ($scope.surveys[i].updated_at) , temp: $scope.surveys[i].currentTemp});
+    $scope.data.tempDataset.push({
+      x: new Date ($scope.surveys[i].updated_at),
+      temp: $scope.surveys[i].currentTemp,
+      hiTemp: $scope.surveys[i].dayTempHi,
+      lowTemp: $scope.surveys[i].dayTempLow
+    });
     if ($scope.surveys[i].currentTemp > dataMax) {
       dataMax = parseFloat($scope.surveys[i].currentTemp) + 15;
     }
@@ -164,6 +169,15 @@ app.controller('tempChartCtrl', ['$scope', '$http', function($scope, $http) {
         color: "white",
         type: ['line'],
         id: 'mySeries0'
+      },
+      {
+        axis: "y",
+        dataset: "tempDataset",
+        key: {y0: "lowTemp", y1: "hiTemp"},
+        label: "daily range",
+        color: "hsla(88, 8%, 8%, .3)",
+        type: ["area"],
+        id: "extrema",
       }
     ],
     axes: {
