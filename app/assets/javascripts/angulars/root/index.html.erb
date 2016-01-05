@@ -1,5 +1,17 @@
   <div ng-controller="rootCtrl" class="">
     <div class="right">
+        <div id="coffee-chart-icon" style="margin-top:15%; margin-left: 50%; font-size: 250%;">
+          <span class="icon-teacup-full">
+          </span>
+        </div>
+        <div id="emotion-chart-icon" style="margin-top:15%; margin-left: 50%; font-size: 250%;">
+          <span class="icon-happy">
+          </span>
+        </div>
+        <div id="temp-chart-icon" style="margin-top:15%; margin-left: 50%; font-size: 250%;">
+          <span class="icon-cloud-sun">
+          </span>
+        </div>
     </div>
     <div class="left">
       <!-- nav bar -->
@@ -9,7 +21,6 @@
             <li><a href="#modalLogin" class="modal-trigger">Sign in</a></li>
             <li><a href="#modalSignup" class="modal-trigger">Sign up</a></li>
           </ul>
-          <a href="#!" class="brand-logo">&nbsp;KAFFEE-KLATSCH</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="#modalLogin" class="modal-trigger">Sign in</a></li>
@@ -21,6 +32,8 @@
       <div class="container">
         <div class="row">
           <div class="col l9">
+            <br/>
+            <br/>
             <h3 class="orange-text">kaffeeklatsch</h3>
             <div class="divider"></div>
             <h5>
@@ -45,19 +58,16 @@
                     <i class="mdi mdi-action-account-circle prefix"></i>
                     <input ng-model="username"id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Username</label>
-                    {{username}}
                   </div>
                   <div class="input-field col m10 offset-m1 blue-text">
                     <i class="mdi mdi-content-inbox prefix"></i>
                     <input ng-model="email" id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Email</label>
-                    {{email}}
                   </div>
                   <div class="input-field col m10 offset-m1 blue-text ">
                     <i class="mdi-action-lock-open prefix"></i>
                     <input ng-model="password" id="icon_password" type="password" class="validate">
                     <label for="icon_prefix">Password</label>
-                    {{password}}
                   </div>
                 </div>
                 <div class="divider"></div>
@@ -78,19 +88,16 @@
                     <i class="mdi mdi-action-account-circle prefix"></i>
                     <input ng-model="username"id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Username</label>
-                    {{username}}
                   </div>
                   <div class="input-field col m10 offset-m1 blue-text">
                     <i class="mdi mdi-content-inbox prefix"></i>
                     <input ng-model="email" id="icon_prefix" type="text" class="validate">
                     <label for="icon_prefix">Email</label>
-                    {{email}}
                   </div>
                   <div class="input-field col m10 offset-m1 blue-text ">
                     <i class="mdi-action-lock-open prefix"></i>
                     <input ng-model="password" id="icon_password" type="password" class="validate">
                     <label for="icon_prefix">Password</label>
-                    {{password}}
                   </div>
                 </div>
                 <div class="divider"></div>
