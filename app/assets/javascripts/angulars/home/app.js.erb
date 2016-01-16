@@ -37,24 +37,30 @@ app.controller('surveyCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.surveyPage = !$scope.surveyPage;
   };
   $scope.addSurvey = function (){
-    $http({
-      method: 'POST',
-      url: '/users/'+ $scope.user.id + '/surveys',
-      data: {
-        user_id: $scope.user.id,
-        emotion: parseFloat(this.emotion),
-        coffees: parseInt(this.coffees)
-      }
-    }).then(function successCallback(response) {
-      if (response.data){
-        $scope.emotion = '';
-        $scope.coffees = '';
-        $scope.surveyPage = true;
-        window.location.reload(true);
-      } else {
-        console.log(response);
-        console.log("survey failed");
-      }
+    var json = 'http://ipv4.myexternalip.com/json';
+    $http.get(json).then(function(result) {
+      console.log(result.ip)
+      $http({
+        method: 'POST',
+        url: '/users/'+ $scope.user.id + '/surveys',
+        data: {
+          user_id: $scope.user.id,
+          emotion: parseFloat(this.emotion),
+          coffees: parseInt(this.coffees)
+        }
+      }).then(function successCallback(response) {
+        if (response.data){
+          $scope.emotion = '';
+          $scope.coffees = '';
+          $scope.surveyPage = true;
+          window.location.reload(true);
+        } else {
+          console.log(response);
+          console.log("survey failed");
+        }
+      });
+    }, function(e) {
+        alert("error");
     });
   };
 }]);
